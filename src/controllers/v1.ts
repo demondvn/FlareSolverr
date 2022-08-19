@@ -152,7 +152,7 @@ export async function controllerV1(req: Request, res: Response): Promise<void> {
     if (params.userAgent) {
       log.warn("Request parameter 'userAgent' was removed in FlareSolverr v2.")
     }
-    params.headers = req.headers as any
+    params.headers = params.headers
     log.warn("Request parameter 'headers' custom",params.headers)
     // set default values
     if (!params.maxTimeout || params.maxTimeout < 1) {
