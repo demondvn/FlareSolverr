@@ -46,7 +46,8 @@ async function resolveChallenge(params: V1Request, session: SessionsCacheItem): 
         // the Puppeter timeout should be half the maxTimeout because we reload the page and wait for challenge
         // the user can set a really high maxTimeout if he wants to
         await page.setDefaultNavigationTimeout(params.maxTimeout / 2)
-        await page.setExtraHTTPHeaders(params.headers)
+        if(params.headers)
+            await page.setExtraHTTPHeaders(params.headers)
         // the user-agent is changed just for linux arm build
         await page.setUserAgent(sessions.getUserAgent())
 
